@@ -1,20 +1,22 @@
-import React from 'react'
-import '../styles/App.css';
-import { useState, useEffect } from 'react';
-const App = () => {
-//code here 
- 
+import React, { useState } from 'react';
+function App() {
+  const [userName, setUserName] = useState('');
+  const [data, setData] = useState({});
+  const onChangeHandler = (e) => {
+    setUserName(e.target.value);
+  };
 
-
-
-  return (
-    <div className="App">
-      <h1 id="text">Type a number between 1 and 10</h1>
-      <input id="input" onChange={changeInput} />
-      <p id="name">{name}</p>
-    </div>
-  );
-}
-
-
-export default App;
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+   
+    
+    fetch(`https://content.newtonschool.co/v1/pr/main/users/${id}`)
+      .then((response) => {   (console.log(response));
+        return response.json();
+      })
+      .then((originalData) => {
+        if (originalData) {
+          setData(originalData);
+        }
+      });
+  };
